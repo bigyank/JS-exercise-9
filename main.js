@@ -1,23 +1,20 @@
 const ball = document.getElementById("ball");
+const container = document.getElementsByClassName("container")[0];
 let ballDiameter = ball.clientHeight;
 const startPos = 0;
-const endPos = document.body.clientHeight - ballDiameter;
+
+// cant access external css so have to assign here
+container.style.height = "700px";
+const endPos = parseInt(container.style.height) - ballDiameter;
+console.log(endPos);
 let ballPos = startPos;
 let direction = 1;
-const speed = 5;
+let speed = 5;
 
 function move() {
-  switch (ballPos) {
-    case endPos:
-      direction = -1;
-      break;
-    case startPos:
-      direction = 1;
-      break;
-  }
-
+  ballPos >= endPos ? (direction = -1) : ballPos == 0 ? (direction = 1) : null;
   ballPos += direction * speed;
-  ball.style.transform = `translateY(${ballPos}px)`;
+  ball.style.top = ballPos + "px";
   window.requestAnimationFrame(move);
 }
 
