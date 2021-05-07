@@ -1,23 +1,23 @@
 const ball = document.getElementById("ball");
 let ballDiameter = ball.clientHeight;
-const startpos = 0;
-const endpos = document.body.clientHeight - ballDiameter;
-let ballpos = 0;
+const startPos = 0;
+const endPos = document.body.clientHeight - ballDiameter;
+let ballPos = startPos;
 let direction = 1;
 const speed = 5;
 
 function move() {
-  switch (ballpos) {
-    case endpos:
+  switch (ballPos) {
+    case endPos:
       direction = -1;
       break;
-    case startpos:
+    case startPos:
       direction = 1;
       break;
   }
 
-  ballpos += direction * speed;
-  ball.style.transform = `translateY(${ballpos}px)`;
+  ballPos += direction * speed;
+  ball.style.transform = `translateY(${ballPos}px)`;
   window.requestAnimationFrame(move);
 }
 
